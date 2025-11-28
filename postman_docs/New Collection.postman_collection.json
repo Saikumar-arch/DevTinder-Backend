@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "ab90391c-f926-4327-a26d-be7a05b7bc75",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49399668",
+		"_collection_link": "https://iamsaikumar630-1011529.postman.co/workspace/b88c09a6-1605-4fea-8469-c456e8d08293/collection/49399668-ab90391c-f926-4327-a26d-be7a05b7bc75?action=share&source=collection_link&creator=49399668"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Sai\",\r\n  \"lastName\": \"Kumar\",\r\n  \"email\": \"Sai@gmail.com\",\r\n  \"password\": \"Sai@123\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Sai\",\r\n  \"lastName\": \"Kumar\",\r\n  \"email\": \"Sai@gmail.com\",\r\n  \"password\": \"Sai@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/profile/edit",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Sai\",\r\n    \"lastName\": \"Kumar\",\r\n    \"photoUrl\": \"https://media.licdn.com/dms/image/v2/D5603AQF/profile-displayphoto-shrink_400_400/0/1723871568?e=1729123200&v=beta&t=xyz\",\r\n    \"age\": 24,\r\n    \"gender\": \"Male\",\r\n    \"about\": \"Infosys\", \r\n    \"skills\": [\"Software Engineer\", \"React Developer\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/profile/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/feed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"feeds\": [\r\n    {\r\n      \"id\": \"SN-1001\",\r\n      \"username\": \"Elon Musk\",\r\n      \"firstname\": \"Elon\",\r\n      \"lastname\": \"Musk\",\r\n      \"fullName\": \"Elon Musk\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society.jpg\",\r\n      \"profession\": \"CEO & Innovator\",\r\n      \"organisation\": \"Tesla, SpaceX\",\r\n      \"skills\": [\"Leadership\", \"Engineering\", \"Innovation\"],\r\n      \"about\": \"Elon Musk is a tech entrepreneur leading Tesla, SpaceX, and Neuralink.\",\r\n      \"age\": 54,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1002\",\r\n      \"username\": \"Prabhas\",\r\n      \"firstname\": \"Uppalapati\",\r\n      \"lastname\": \"Prabhas Raju\",\r\n      \"fullName\": \"Prabhas Raju Uppalapati\",\r\n      \"profileImage\": \"https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2024/08/kalki-ott-release-1723871568.jpg\",\r\n      \"profession\": \"Actor\",\r\n      \"organisation\": \"Tollywood Film Industry\",\r\n      \"skills\": [\"Acting\", \"Fitness\", \"Public Speaking\"],\r\n      \"about\": \"Prabhas is an Indian actor known for the Baahubali film series.\",\r\n      \"age\": 45,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1003\",\r\n      \"username\": \"Taylor Swift\",\r\n      \"firstname\": \"Taylor\",\r\n      \"lastname\": \"Swift\",\r\n      \"fullName\": \"Taylor Alison Swift\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/4/4c/Taylor_Swift_2_-_2019_by_Glenn_Francis.jpg\",\r\n      \"profession\": \"Singer & Songwriter\",\r\n      \"organisation\": \"Republic Records\",\r\n      \"skills\": [\"Singing\", \"Songwriting\", \"Performance\"],\r\n      \"about\": \"Taylor Swift is an American singer-songwriter famous for her storytelling.\",\r\n      \"age\": 35,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1004\",\r\n      \"username\": \"Lionel Messi\",\r\n      \"firstname\": \"Lionel\",\r\n      \"lastname\": \"Messi\",\r\n      \"fullName\": \"Lionel Andrés Messi\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/8/89/Lionel_Messi_20180626.jpg\",\r\n      \"profession\": \"Football Player\",\r\n      \"organisation\": \"Inter Miami CF\",\r\n      \"skills\": [\"Football\", \"Leadership\", \"Sportsmanship\"],\r\n      \"about\": \"Lionel Messi is an Argentine footballer, widely considered among the greatest ever.\",\r\n      \"age\": 38,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1005\",\r\n      \"username\": \"Cristiano Ronaldo\",\r\n      \"firstname\": \"Cristiano\",\r\n      \"lastname\": \"Ronaldo\",\r\n      \"fullName\": \"Cristiano Ronaldo dos Santos Aveiro\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg\",\r\n      \"profession\": \"Football Player\",\r\n      \"organisation\": \"Al-Nassr FC\",\r\n      \"skills\": [\"Football\", \"Fitness\", \"Motivation\"],\r\n      \"about\": \"Cristiano Ronaldo is a Portuguese footballer and global sports icon.\",\r\n      \"age\": 40,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1006\",\r\n      \"username\": \"Sundar Pichai\",\r\n      \"firstname\": \"Sundar\",\r\n      \"lastname\": \"Pichai\",\r\n      \"fullName\": \"Pichai Sundararajan\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/4/4d/Sundar_Pichai_in_2015.jpg\",\r\n      \"profession\": \"CEO\",\r\n      \"organisation\": \"Google\",\r\n      \"skills\": [\"Leadership\", \"Technology\", \"Strategy\"],\r\n      \"about\": \"Sundar Pichai is the CEO of Alphabet Inc., the parent company of Google.\",\r\n      \"age\": 52,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1007\",\r\n      \"username\": \"Emma Watson\",\r\n      \"firstname\": \"Emma\",\r\n      \"lastname\": \"Watson\",\r\n      \"fullName\": \"Emma Charlotte Duerre Watson\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/0/0b/Emma_Watson_2013.jpg\",\r\n      \"profession\": \"Actor & Activist\",\r\n      \"organisation\": \"UN Women\",\r\n      \"skills\": [\"Acting\", \"Advocacy\", \"Public Speaking\"],\r\n      \"about\": \"Emma Watson is an English actress and activist for gender equality.\",\r\n      \"age\": 35,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1008\",\r\n      \"username\": \"Bill Gates\",\r\n      \"firstname\": \"Bill\",\r\n      \"lastname\": \"Gates\",\r\n      \"fullName\": \"William Henry Gates III\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/a/a0/Bill_Gates_2018.jpg\",\r\n      \"profession\": \"Philanthropist\",\r\n      \"organisation\": \"Bill & Melinda Gates Foundation\",\r\n      \"skills\": [\"Programming\", \"Leadership\", \"Philanthropy\"],\r\n      \"about\": \"Bill Gates co-founded Microsoft and leads global health initiatives.\",\r\n      \"age\": 69,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1009\",\r\n      \"username\": \"Gal Gadot\",\r\n      \"firstname\": \"Gal\",\r\n      \"lastname\": \"Gadot\",\r\n      \"fullName\": \"Gal Gadot Varsano\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/d/d2/Gal_Gadot_2018.jpg\",\r\n      \"profession\": \"Actor & Producer\",\r\n      \"organisation\": \"Pilot Wave Films\",\r\n      \"skills\": [\"Acting\", \"Modeling\", \"Production\"],\r\n      \"about\": \"Gal Gadot is an Israeli actress best known for playing Wonder Woman.\",\r\n      \"age\": 40,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1010\",\r\n      \"username\": \"Barack Obama\",\r\n      \"firstname\": \"Barack\",\r\n      \"lastname\": \"Obama\",\r\n      \"fullName\": \"Barack Hussein Obama II\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg\",\r\n      \"profession\": \"Former US President\",\r\n      \"organisation\": \"United States Government\",\r\n      \"skills\": [\"Leadership\", \"Public Speaking\", \"Policy\"],\r\n      \"about\": \"Barack Obama served as the 44th President of the United States.\",\r\n      \"age\": 64,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1011\",\r\n      \"username\": \"Virat Kohli\",\r\n      \"firstname\": \"Virat\",\r\n      \"lastname\": \"Kohli\",\r\n      \"fullName\": \"Virat Kohli\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/d/d5/Virat_Kohli_portrait.jpg\",\r\n      \"profession\": \"Cricketer\",\r\n      \"organisation\": \"Indian Cricket Team\",\r\n      \"skills\": [\"Batting\", \"Leadership\", \"Fitness\"],\r\n      \"about\": \"Virat Kohli is an Indian cricketer and former captain known for his aggression and consistency.\",\r\n      \"age\": 37,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1012\",\r\n      \"username\": \"Ariana Grande\",\r\n      \"firstname\": \"Ariana\",\r\n      \"lastname\": \"Grande\",\r\n      \"fullName\": \"Ariana Grande-Butera\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/4/4e/Ariana_Grande_Grammys_2020.png\",\r\n      \"profession\": \"Singer & Actor\",\r\n      \"organisation\": \"Republic Records\",\r\n      \"skills\": [\"Singing\", \"Acting\", \"Performance\"],\r\n      \"about\": \"Ariana Grande is a Grammy-winning singer known for her vocal range.\",\r\n      \"age\": 32,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1013\",\r\n      \"username\": \"Narendra Modi\",\r\n      \"firstname\": \"Narendra\",\r\n      \"lastname\": \"Modi\",\r\n      \"fullName\": \"Narendra Damodardas Modi\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/3/3e/Narendra_Modi_official_2020.jpg\",\r\n      \"profession\": \"Prime Minister of India\",\r\n      \"organisation\": \"Government of India\",\r\n      \"skills\": [\"Leadership\", \"Policy\", \"Public Speaking\"],\r\n      \"about\": \"Narendra Modi is the Prime Minister of India since 2014.\",\r\n      \"age\": 75,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1014\",\r\n      \"username\": \"Oprah Winfrey\",\r\n      \"firstname\": \"Oprah\",\r\n      \"lastname\": \"Winfrey\",\r\n      \"fullName\": \"Oprah Gail Winfrey\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/5/5d/Oprah_Winfrey_2014.jpg\",\r\n      \"profession\": \"Television Host & Producer\",\r\n      \"organisation\": \"OWN Network\",\r\n      \"skills\": [\"Hosting\", \"Production\", \"Leadership\"],\r\n      \"about\": \"Oprah Winfrey is a television host and media executive known for 'The Oprah Winfrey Show'.\",\r\n      \"age\": 71,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1015\",\r\n      \"username\": \"Tom Cruise\",\r\n      \"firstname\": \"Tom\",\r\n      \"lastname\": \"Cruise\",\r\n      \"fullName\": \"Thomas Cruise Mapother IV\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/d/d8/Tom_Cruise_2019.jpg\",\r\n      \"profession\": \"Actor & Producer\",\r\n      \"organisation\": \"Paramount Pictures\",\r\n      \"skills\": [\"Acting\", \"Production\", \"Stunts\"],\r\n      \"about\": \"Tom Cruise is an American actor known for his Mission: Impossible films.\",\r\n      \"age\": 63,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1016\",\r\n      \"username\": \"Jennifer Lopez\",\r\n      \"firstname\": \"Jennifer\",\r\n      \"lastname\": \"Lopez\",\r\n      \"fullName\": \"Jennifer Lynn Lopez\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/4/4f/Jennifer_Lopez_in_2020.jpg\",\r\n      \"profession\": \"Singer & Actor\",\r\n      \"organisation\": \"Nuyorican Productions\",\r\n      \"skills\": [\"Singing\", \"Acting\", \"Dance\"],\r\n      \"about\": \"Jennifer Lopez is an American singer and actress also known as J.Lo.\",\r\n      \"age\": 56,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1017\",\r\n      \"username\": \"Robert Downey Jr\",\r\n      \"firstname\": \"Robert\",\r\n      \"lastname\": \"Downey Jr\",\r\n      \"fullName\": \"Robert John Downey Jr.\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/f/f3/Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg\",\r\n      \"profession\": \"Actor\",\r\n      \"organisation\": \"Marvel Studios\",\r\n      \"skills\": [\"Acting\", \"Production\", \"Comedy\"],\r\n      \"about\": \"Robert Downey Jr. is an American actor known for playing Iron Man.\",\r\n      \"age\": 60,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1018\",\r\n      \"username\": \"Emma Stone\",\r\n      \"firstname\": \"Emma\",\r\n      \"lastname\": \"Stone\",\r\n      \"fullName\": \"Emily Jean Stone\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/b/b5/Emma_Stone_2016.jpg\",\r\n      \"profession\": \"Actor\",\r\n      \"organisation\": \"Hollywood\",\r\n      \"skills\": [\"Acting\", \"Comedy\", \"Drama\"],\r\n      \"about\": \"Emma Stone is an Oscar-winning actress known for 'La La Land'.\",\r\n      \"age\": 37,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1019\",\r\n      \"username\": \"Mark Zuckerberg\",\r\n      \"firstname\": \"Mark\",\r\n      \"lastname\": \"Zuckerberg\",\r\n      \"fullName\": \"Mark Elliot Zuckerberg\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/0/0b/Mark_Zuckerberg_F8_2019_Keynote_%2847831170501%29_%28cropped%29.jpg\",\r\n      \"profession\": \"CEO\",\r\n      \"organisation\": \"Meta Platforms\",\r\n      \"skills\": [\"Programming\", \"Leadership\", \"Business\"],\r\n      \"about\": \"Mark Zuckerberg is the founder and CEO of Meta (formerly Facebook).\",\r\n      \"age\": 41,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1020\",\r\n      \"username\": \"Rihanna\",\r\n      \"firstname\": \"Robyn\",\r\n      \"lastname\": \"Fenty\",\r\n      \"fullName\": \"Robyn Rihanna Fenty\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/7/70/Rihanna_Fenty_2018.png\",\r\n      \"profession\": \"Singer & Entrepreneur\",\r\n      \"organisation\": \"Fenty Beauty\",\r\n      \"skills\": [\"Singing\", \"Fashion\", \"Business\"],\r\n      \"about\": \"Rihanna is a Barbadian singer and businesswoman known for Fenty Beauty.\",\r\n      \"age\": 37,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1021\",\r\n      \"username\": \"Keanu Reeves\",\r\n      \"firstname\": \"Keanu\",\r\n      \"lastname\": \"Reeves\",\r\n      \"fullName\": \"Keanu Charles Reeves\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/b/bd/Keanu_Reeves_2019.jpg\",\r\n      \"profession\": \"Actor\",\r\n      \"organisation\": \"Warner Bros\",\r\n      \"skills\": [\"Acting\", \"Martial Arts\", \"Production\"],\r\n      \"about\": \"Keanu Reeves is a Canadian actor known for The Matrix and John Wick.\",\r\n      \"age\": 61,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1022\",\r\n      \"username\": \"Kylie Jenner\",\r\n      \"firstname\": \"Kylie\",\r\n      \"lastname\": \"Jenner\",\r\n      \"fullName\": \"Kylie Kristen Jenner\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/4/4b/Kylie_Jenner_in_2021.png\",\r\n      \"profession\": \"Entrepreneur & Model\",\r\n      \"organisation\": \"Kylie Cosmetics\",\r\n      \"skills\": [\"Fashion\", \"Marketing\", \"Business\"],\r\n      \"about\": \"Kylie Jenner is an entrepreneur known for her beauty brand Kylie Cosmetics.\",\r\n      \"age\": 28,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1023\",\r\n      \"username\": \"Sachin Tendulkar\",\r\n      \"firstname\": \"Sachin\",\r\n      \"lastname\": \"Tendulkar\",\r\n      \"fullName\": \"Sachin Ramesh Tendulkar\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/2/25/Sachin_Tendulkar_in_2015.jpg\",\r\n      \"profession\": \"Cricketer\",\r\n      \"organisation\": \"Indian Cricket Board\",\r\n      \"skills\": [\"Batting\", \"Mentoring\", \"Strategy\"],\r\n      \"about\": \"Sachin Tendulkar is a legendary Indian cricketer known as the 'God of Cricket'.\",\r\n      \"age\": 52,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1024\",\r\n      \"username\": \"Selena Gomez\",\r\n      \"firstname\": \"Selena\",\r\n      \"lastname\": \"Gomez\",\r\n      \"fullName\": \"Selena Marie Gomez\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/2/2a/Selena_Gomez_2019.png\",\r\n      \"profession\": \"Singer & Actor\",\r\n      \"organisation\": \"Rare Beauty\",\r\n      \"skills\": [\"Singing\", \"Acting\", \"Business\"],\r\n      \"about\": \"Selena Gomez is an American singer and actress who founded Rare Beauty.\",\r\n      \"age\": 33,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1025\",\r\n      \"username\": \"Jeff Bezos\",\r\n      \"firstname\": \"Jeff\",\r\n      \"lastname\": \"Bezos\",\r\n      \"fullName\": \"Jeffrey Preston Bezos\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/0/0d/Jeff_Bezos%27s_official_portrait.jpg\",\r\n      \"profession\": \"Entrepreneur\",\r\n      \"organisation\": \"Amazon, Blue Origin\",\r\n      \"skills\": [\"Leadership\", \"Innovation\", \"Business\"],\r\n      \"about\": \"Jeff Bezos is the founder of Amazon and Blue Origin.\",\r\n      \"age\": 61,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1026\",\r\n      \"username\": \"Deepika Padukone\",\r\n      \"firstname\": \"Deepika\",\r\n      \"lastname\": \"Padukone\",\r\n      \"fullName\": \"Deepika Padukone\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/3/30/Deepika_Padukone_Cannes_2018.jpg\",\r\n      \"profession\": \"Actor\",\r\n      \"organisation\": \"Bollywood\",\r\n      \"skills\": [\"Acting\", \"Dance\", \"Modeling\"],\r\n      \"about\": \"Deepika Padukone is a top Indian actress and producer.\",\r\n      \"age\": 39,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1027\",\r\n      \"username\": \"Chris Hemsworth\",\r\n      \"firstname\": \"Chris\",\r\n      \"lastname\": \"Hemsworth\",\r\n      \"fullName\": \"Christopher Hemsworth\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/f/f8/Chris_Hemsworth_2019_%28cropped%29.jpg\",\r\n      \"profession\": \"Actor\",\r\n      \"organisation\": \"Marvel Studios\",\r\n      \"skills\": [\"Acting\", \"Fitness\", \"Production\"],\r\n      \"about\": \"Chris Hemsworth is an Australian actor famous for portraying Thor in the MCU.\",\r\n      \"age\": 42,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1028\",\r\n      \"username\": \"Greta Thunberg\",\r\n      \"firstname\": \"Greta\",\r\n      \"lastname\": \"Thunberg\",\r\n      \"fullName\": \"Greta Tintin Eleonora Ernman Thunberg\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/1/1e/Greta_Thunberg_2023.jpg\",\r\n      \"profession\": \"Climate Activist\",\r\n      \"organisation\": \"Fridays for Future\",\r\n      \"skills\": [\"Public Speaking\", \"Activism\", \"Awareness\"],\r\n      \"about\": \"Greta Thunberg is a Swedish environmental activist known for inspiring global climate movements.\",\r\n      \"age\": 22,\r\n      \"gender\": \"Female\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1029\",\r\n      \"username\": \"LeBron James\",\r\n      \"firstname\": \"LeBron\",\r\n      \"lastname\": \"James\",\r\n      \"fullName\": \"LeBron Raymone James Sr.\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/2/25/LeBron_James_Lakers_2021_%28cropped%29.jpg\",\r\n      \"profession\": \"Basketball Player\",\r\n      \"organisation\": \"Los Angeles Lakers\",\r\n      \"skills\": [\"Basketball\", \"Leadership\", \"Philanthropy\"],\r\n      \"about\": \"LeBron James is an American basketball player regarded as one of the greatest in NBA history.\",\r\n      \"age\": 40,\r\n      \"gender\": \"Male\"\r\n    },\r\n    {\r\n      \"id\": \"SN-1030\",\r\n      \"username\": \"Billie Eilish\",\r\n      \"firstname\": \"Billie\",\r\n      \"lastname\": \"Eilish\",\r\n      \"fullName\": \"Billie Eilish Pirate Baird O'Connell\",\r\n      \"profileImage\": \"https://upload.wikimedia.org/wikipedia/commons/8/8b/Billie_Eilish_2023.jpg\",\r\n      \"profession\": \"Singer & Songwriter\",\r\n      \"organisation\": \"Darkroom/Interscope\",\r\n      \"skills\": [\"Singing\", \"Songwriting\", \"Performance\"],\r\n      \"about\": \"Billie Eilish is an American singer-songwriter known for her unique sound and style.\",\r\n      \"age\": 23,\r\n      \"gender\": \"Female\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/feed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"feed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/connections/bulk",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"interested\",\r\n    \"ids\": [\r\n        \"SN-1001\",\r\n        \"SN-1002\",\r\n        \"SN-1003\",\r\n        \"SN-1004\",\r\n        \"SN-1005\",\r\n        \"SN-1006\",\r\n        \"SN-1007\",\r\n        \"SN-1008\",\r\n        \"SN-1009\",\r\n        \"SN-1010\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/connections/bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"connections",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/request/send/interested/SN-1002",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Request Sent!\",\r\n    \"data\": {\r\n        \"fromUserId\": \"Sai@gmail.com\",\r\n        \"toUserId\": \"SN-1002\",\r\n        \"status\": \"interested\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/request/send/interested/SN-1002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"request",
+						"send",
+						"interested",
+						"SN-1002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/request/send/ignored/SN-1001",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"User Ignored\",\r\n    \"data\": {\r\n        \"fromUserId\": \"Sai@gmail.com\",\r\n        \"toUserId\": \"SN-1001\",\r\n        \"status\": \"ignored\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/request/send/ignored/SN-1001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"request",
+						"send",
+						"ignored",
+						"SN-1001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/profile/edit",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Sai\",\r\n    \"lastName\": \"Kumar\",\r\n    \"photoUrl\": \"https://media.licdn.com/dms/image/v2/D5603AQF/profile-displayphoto-shrink_400_400/0/1723871568?e=1729123200&v=beta&t=xyz\",\r\n    \"age\": 24,\r\n    \"gender\": \"Male\",\r\n    \"about\": \"Infosys\", \r\n    \"skills\": [\"Software Engineer\", \"React Developer\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/profile/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
