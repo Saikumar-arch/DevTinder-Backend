@@ -22,11 +22,12 @@ const isProduction = process.env.NODE_ENV === "production";
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Vite Localhost
-      "http://localhost:5174", // Alternative Localhost
-      "https://devtinder-coolapp.netlify.app", // <--- UPDATE THIS with your actual Netlify URL later
+      "http://localhost:5173", 
+      "http://localhost:5174", 
+      "https://devtinder-coolapp.netlify.app", 
+      "https://devtinder-we.netlify.app/"
     ],
-    credentials: true, // Allows cookies to be sent
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
