@@ -22,10 +22,9 @@ const isProduction = process.env.NODE_ENV === "production";
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", 
-      "http://localhost:5174", 
-      "https://devtinder-coolapp.netlify.app", 
-      "https://devtinder-we.netlify.app/"
+      "http://localhost:5173",
+      "https://devtinder-backend-m3wn.onrender.com",
+      "https://devtinder-we.netlify.app" // <--- ADD THIS EXACT URL
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
