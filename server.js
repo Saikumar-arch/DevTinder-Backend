@@ -1,5 +1,5 @@
 /****************************************************
- * FULL BACKEND — COMPLETE & FIXED
+ * FULL BACKEND — READY FOR RENDER DEPLOYMENT
  ****************************************************/
 
 const express = require("express");
@@ -12,20 +12,28 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+// --- PRODUCTION HELPERS ---
+// This variable checks if we are running on Render (Production) or Localhost
+const isProduction = process.env.NODE_ENV === "production";
+
 /****************************************************
- * CORS (Important for cookies)
+ * 1. UPDATED CORS (Critical for Deployment)
  ****************************************************/
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
-    credentials: true,
+    origin: [
+      "http://localhost:5173", // Vite Localhost
+      "http://localhost:5174", // Alternative Localhost
+      "https://devtinder-coolapp.netlify.app", // <--- UPDATE THIS with your actual Netlify URL later
+    ],
+    credentials: true, // Allows cookies to be sent
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
 /****************************************************
- * 📦 IN-MEMORY DATABASE
+ * 📦 IN-MEMORY DATABASE (Resets on every deploy)
  ****************************************************/
 
 // 1. USERS
@@ -35,7 +43,6 @@ let users = [
     lastName: "Kumar",
     email: "Sai@gmail.com",
     password: bcrypt.hashSync("Sai@123", 10),
-    // Generic Developer Avatar for the logged-in user
     photoUrl: "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg",
     age: 24,
     gender: "Male",
@@ -43,6 +50,7 @@ let users = [
     skills: ["Software Engineer", "React Developer"],
   },
 ];
+
 
 // 2. FEEDS (Full List of 30 Users with Working Images)
 let feeds = [
@@ -468,17 +476,18 @@ let feeds = [
   },
 ];
 
-// 3. CONNECTIONS (Pre-filled Data: Elon & Prabhas sent Requests to Sai)
+
+// 3. CONNECTIONS
 let connections = [
   {
-    fromUserId: "SN-1001", // Elon sent request
-    toUserId: "Sai@gmail.com", // To You
-    status: "interested", // Pending (Requests Page)
+    fromUserId: "SN-1001",
+    toUserId: "Sai@gmail.com",
+    status: "interested",
   },
   {
-    fromUserId: "SN-1002", // Prabhas sent request
-    toUserId: "Sai@gmail.com", // To You
-    status: "interested", // Pending (Requests Page)
+    fromUserId: "SN-1002",
+    toUserId: "Sai@gmail.com",
+    status: "interested",
   },
 ];
 
@@ -486,7 +495,7 @@ let connections = [
  * 🔐 AUTH & MIDDLEWARE
  ****************************************************/
 const generateToken = (email) => {
-  return jwt.sign({ email }, "secretKey", { expiresIn: "7d" });
+  return jwt.sign({ email }, process.env.JWT_SECRET || "secretKey", { expiresIn: "7d" });
 };
 
 const verifyToken = (req, res, next) => {
@@ -494,7 +503,7 @@ const verifyToken = (req, res, next) => {
   if (!token) return res.status(401).json({ message: "No token provided" });
 
   try {
-    const decoded = jwt.verify(token, "secretKey");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "secretKey");
     req.user = decoded;
     next();
   } catch (err) {
@@ -517,7 +526,7 @@ app.post("/api/register", async (req, res) => {
   res.status(201).json({ message: "User registered successfully", user: { firstName, lastName, email } });
 });
 
-// LOGIN
+// LOGIN (UPDATED COOKIE LOGIC)
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   const user = users.find((u) => u.email === email);
@@ -528,7 +537,14 @@ app.post("/api/login", async (req, res) => {
   if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
 
   const token = generateToken(email);
-  res.cookie("token", token, { httpOnly: true, sameSite: "Lax" });
+
+  // CRITICAL: Different cookie settings for Localhost vs Production
+  res.cookie("token", token, {
+    httpOnly: true,
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+    secure: isProduction, // TRUE on Render (https), FALSE on localhost
+    sameSite: isProduction ? "None" : "Lax", // NONE on Render (Cross-site), LAX on localhost
+  });
 
   return res.json({
     message: "Login successful",
@@ -538,7 +554,12 @@ app.post("/api/login", async (req, res) => {
 
 // LOGOUT
 app.post("/api/logout", (req, res) => {
-  res.clearCookie("token");
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "None" : "Lax",
+  });
   res.json({ message: "Logout successful" });
 });
 
@@ -548,7 +569,7 @@ app.post("/api/logout", (req, res) => {
 app.get("/api/profile", verifyToken, (req, res) => {
   const user = users.find((u) => u.email === req.user.email);
   if (!user) return res.status(404).json({ message: "User not found" });
-  
+
   res.json({ message: "Profile fetched", user: { ...user, password: undefined } });
 });
 
@@ -573,14 +594,11 @@ app.patch("/api/profile/edit", verifyToken, (req, res) => {
  * 📱 FEED & CONNECTION LOGIC
  ****************************************************/
 
-/**
- * 1. SMART FEED API (GET)
- * Logic: Show users I have NOT interacted with yet.
- */
+// 1. SMART FEED API
 app.get("/api/feed", verifyToken, (req, res) => {
   const loggedInUser = req.user.email;
   const hiddenUsers = new Set();
-  
+
   connections.forEach((c) => {
     if (c.fromUserId === loggedInUser) hiddenUsers.add(c.toUserId);
     if (c.toUserId === loggedInUser) hiddenUsers.add(c.fromUserId);
@@ -590,10 +608,7 @@ app.get("/api/feed", verifyToken, (req, res) => {
   res.json({ data: feedData });
 });
 
-/**
- * 2. SEND REQUEST (POST) - "Interested" or "Ignored"
- * Usage: /api/request/send/interested/SN-1001
- */
+// 2. SEND REQUEST
 app.post("/api/request/send/:status/:toUserId", verifyToken, (req, res) => {
   const fromUserId = req.user.email;
   const { toUserId, status } = req.params;
@@ -605,17 +620,12 @@ app.post("/api/request/send/:status/:toUserId", verifyToken, (req, res) => {
   if (!toUser) return res.status(404).json({ message: "User not found" });
 
   connections.push({ fromUserId, toUserId, status });
-
   res.json({ message: status === "interested" ? "Request Sent!" : "User Ignored" });
 });
 
-/**
- * 3. GET RECEIVED REQUESTS (GET) - Who sent me a request?
- * Usage: /api/user/requests/received
- */
+// 3. GET RECEIVED REQUESTS
 app.get("/api/user/requests/received", verifyToken, (req, res) => {
   const loggedInUser = req.user.email;
-
   const receivedRequests = connections.filter(
     (c) => c.toUserId === loggedInUser && c.status === "interested"
   );
@@ -630,10 +640,7 @@ app.get("/api/user/requests/received", verifyToken, (req, res) => {
   res.json({ data });
 });
 
-/**
- * 4. REVIEW REQUEST (POST) - Accept or Reject
- * Usage: /api/request/review/accepted/SN-1001
- */
+// 4. REVIEW REQUEST
 app.post("/api/request/review/:status/:requestId", verifyToken, (req, res) => {
   const loggedInUser = req.user.email;
   const { status, requestId } = req.params;
@@ -647,19 +654,16 @@ app.post("/api/request/review/:status/:requestId", verifyToken, (req, res) => {
 
   if (!request) return res.status(404).json({ message: "Request not found" });
 
-  request.status = status; 
+  request.status = status;
   res.json({ message: `Request ${status}` });
 });
 
-/**
- * 5. GET MY CONNECTIONS (GET) - People I accepted or who accepted me
- * Usage: /api/user/connections
- */
+// 5. GET MY CONNECTIONS
 app.get("/api/user/connections", verifyToken, (req, res) => {
   const loggedInUser = req.user.email;
 
   const myConnections = connections.filter(
-    (c) => (c.fromUserId === loggedInUser || c.toUserId === loggedInUser) && 
+    (c) => (c.fromUserId === loggedInUser || c.toUserId === loggedInUser) &&
            (c.status === "accepted" || (c.fromUserId === loggedInUser && c.status === "interested"))
   );
 
@@ -673,9 +677,7 @@ app.get("/api/user/connections", verifyToken, (req, res) => {
   res.json({ data });
 });
 
-/**
- * 6. BULK ADD (For Testing)
- */
+// 6. BULK ADD (For Testing)
 app.post("/api/connections/bulk", verifyToken, (req, res) => {
   const { ids, status } = req.body;
   const fromUserId = req.user.email;
@@ -694,8 +696,11 @@ app.post("/api/connections/bulk", verifyToken, (req, res) => {
 });
 
 /****************************************************
- * START SERVER
+ * 2. START SERVER (Updated Port Logic)
  ****************************************************/
-app.listen(3000, () =>
-  console.log("🚀 Server running: http://localhost:3000")
-);
+// Render assigns a random port to process.env.PORT, so we must use it.
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server successfully running on port ${PORT}`);
+  console.log(`🌍 Environment: ${isProduction ? "Production (Render)" : "Development (Localhost)"}`);
+});
